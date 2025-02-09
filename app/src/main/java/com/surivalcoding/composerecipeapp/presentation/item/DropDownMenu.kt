@@ -2,9 +2,7 @@ package com.surivalcoding.composerecipeapp.presentation.item
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -25,7 +23,10 @@ import com.surivalcoding.composerecipeapp.ui.theme.ComposeRecipeAppTheme
 fun DropDownMenuWithDetails(
     isExpanded: Boolean,
     onDismissRequest: () -> Unit = {},
-    onShareClick: () -> Unit = {}
+    onShareClick: () -> Unit = {},
+    onRateRecipeClick: () -> Unit = {},
+    onReviewClick: () -> Unit = {},
+    onUnsaveClick: () -> Unit = {},
 ) {
 
     DropdownMenu(
@@ -77,7 +78,9 @@ fun DropDownMenuWithDetails(
                     tint = AppColors.label_color
                 )
             },
-            onClick = { },
+            onClick = {
+                onRateRecipeClick()
+            },
             contentPadding = PaddingValues(horizontal = 18.dp),
             modifier = Modifier.height(40.dp)
         )

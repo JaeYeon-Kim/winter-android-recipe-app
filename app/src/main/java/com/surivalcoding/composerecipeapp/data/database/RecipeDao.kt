@@ -17,7 +17,6 @@ interface RecipeDao {
     @Query("SELECT * FROM recipes")
     fun getAllRecipes(): Flow<List<RecipeEntity>>
 
-
     // 북마크된 전체 리스트 가져오기
     @Query("SELECT * FROM recipes WHERE isBookMarked = 1")
     fun getBookmarkedRecipes(): Flow<List<RecipeEntity>>

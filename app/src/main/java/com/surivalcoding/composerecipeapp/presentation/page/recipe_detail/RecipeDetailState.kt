@@ -6,5 +6,6 @@ data class RecipeDetailState(
     val recipeDetail: Recipe? = null,
     val recipeCategoryButtonState: RecipeDetailButtonState = RecipeDetailButtonState(),
     val isDropDownMenuVisible: Boolean = false,
-    val showDialog: Boolean = false
+    val isShowShareDialog: Boolean = false,
+    val isShowRateRecipeDialog: Boolean = false
 )

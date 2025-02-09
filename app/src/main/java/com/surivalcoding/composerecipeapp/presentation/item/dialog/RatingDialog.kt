@@ -34,8 +34,6 @@ import com.surivalcoding.composerecipeapp.ui.AppTextStyles
 
 @Composable
 fun RatingDialog(
-    title: String,
-    actionName: String,
     starIndex: Int = 0,
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit = {},
@@ -44,12 +42,8 @@ fun RatingDialog(
     Dialog(
         onDismissRequest = { onDismissRequest() }
     ) {
-
-        val emptyStarImage = painterResource(R.drawable.star_empty)
-        val fillStarImage = painterResource(R.drawable.star_fill)
         // 별 채워짐 상태 변수
         var starState by remember { mutableIntStateOf(starIndex) }
-
 
         Card(
             modifier = modifier
@@ -66,12 +60,12 @@ fun RatingDialog(
             ) {
                 Spacer(Modifier.height(10.dp))
                 Text(
-                    title, style = AppTextStyles.smallTextRegular.copy(
+                    text = "Rate recipe", style = AppTextStyles.smallTextRegular.copy(
                         color = AppColors.label_color
                     )
                 )
 
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(7.dp))
 
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -81,7 +75,7 @@ fun RatingDialog(
                 ) {
                     repeat(5) { index ->
                         Image(
-                            painter = if (index < starState) fillStarImage else emptyStarImage,
+                            painter = if (index < starState) painterResource(R.drawable.star_fill) else painterResource(R.drawable.star_empty),
                             contentDescription = null,
                             modifier = Modifier
                                 .weight(1f)
@@ -91,7 +85,7 @@ fun RatingDialog(
                     }
 
                 }
-                Spacer(modifier = Modifier.height(5.dp))
+                Spacer(modifier = Modifier.height(7.dp))
 
                 Box(
                     modifier = Modifier
@@ -105,7 +99,7 @@ fun RatingDialog(
                         .padding(vertical = 4.dp, horizontal = 20.dp)
                 ) {
                     Text(
-                        text = actionName, style = AppTextStyles.smallTextRegular.copy(
+                        text = "Send", style = AppTextStyles.smallTextRegular.copy(
                             fontSize = 8.sp, color = AppColors.white
                         )
                     )
@@ -121,7 +115,7 @@ fun RatingDialog(
 @Preview(showBackground = true)
 @Composable
 private fun RatingDialogPreview() {
-    RatingDialog(title = "Rate recipe", actionName = "Send", starIndex = 0, onDismissRequest = {
+    RatingDialog(starIndex = 0, onDismissRequest = {
         println("다이얼로그 종료 해버리깅!!")
     }, send = {
         println("보낸 별 갯수 $it ")
@@ -133,7 +127,7 @@ private fun RatingDialogPreview() {
 private fun RatingDialogPreviewCheck() {
     // 별 채워짐 상태 변수
     var starIndex by remember { mutableIntStateOf(3) }
-    RatingDialog(title = "Rate recipe", actionName = "Send", starIndex = starIndex, onDismissRequest = {
+    RatingDialog(starIndex = starIndex, onDismissRequest = {
         println("다이얼로그 종료 해버리깅!!")
     })
 }

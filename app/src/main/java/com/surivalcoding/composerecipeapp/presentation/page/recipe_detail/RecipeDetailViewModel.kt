@@ -59,9 +59,17 @@ class RecipeDetailViewModel @Inject constructor(
                 copyLinkUseCase.execute(action.link)
             }
 
-            is RecipeDetailAction.HandleDialog -> {
+            // 드롭다운 - 공유
+            is RecipeDetailAction.ShareRecipe -> {
                 _recipeDetailState.value = _recipeDetailState.value.copy(
-                    showDialog = action.isVisible
+                    isShowShareDialog = action.isVisible
+                )
+            }
+
+            // 드롭다운 - Rate Recipe
+            is RecipeDetailAction.RateRecipe -> {
+                _recipeDetailState.value = _recipeDetailState.value.copy(
+                    isShowRateRecipeDialog = action.isVisible
                 )
             }
         }
