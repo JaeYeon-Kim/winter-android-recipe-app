@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.surivalcoding.composerecipeapp.R
+import com.surivalcoding.composerecipeapp.data.database.RecipeDao
 import com.surivalcoding.composerecipeapp.presentation.item.DropDownMenuWithDetails
 import com.surivalcoding.composerecipeapp.presentation.item.IngredientItem
 import com.surivalcoding.composerecipeapp.presentation.item.ProcedureCard
@@ -103,6 +104,13 @@ fun RecipeDetailScreen(
                         // 드롭다운 메뉴를 닫고 -> 다이얼로그를 띄움
                         onAction(RecipeDetailAction.HandleDropDown(false))
                         onAction(RecipeDetailAction.RateRecipe(true))
+                    },
+
+                    // 북마크 삭제 클릭시
+                    onUnsaveClick = {
+                        // 드롭다운 메뉴를 닫고 북마크 삭제 구현
+                        onAction(RecipeDetailAction.HandleDropDown(false))
+                        onAction(RecipeDetailAction.UnSaveRecipe(state.recipeDetail?.id ?: 0))
                     }
                 )
             }

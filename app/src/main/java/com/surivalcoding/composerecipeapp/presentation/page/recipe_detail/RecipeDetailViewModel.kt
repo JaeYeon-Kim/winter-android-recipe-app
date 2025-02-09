@@ -2,18 +2,22 @@ package com.surivalcoding.composerecipeapp.presentation.page.recipe_detail
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.orhanobut.logger.Logger
 import com.surivalcoding.composerecipeapp.domain.model.Recipe
 import com.surivalcoding.composerecipeapp.domain.usecase.CopyLinkUseCase
+import com.surivalcoding.composerecipeapp.domain.usecase.DeleteBookmarkUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @HiltViewModel
 class RecipeDetailViewModel @Inject constructor(
     private val copyLinkUseCase: CopyLinkUseCase,
+    private val deleteBookmarkUseCase: DeleteBookmarkUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _recipeDetailState = MutableStateFlow(RecipeDetailState())
@@ -71,6 +75,13 @@ class RecipeDetailViewModel @Inject constructor(
                 _recipeDetailState.value = _recipeDetailState.value.copy(
                     isShowRateRecipeDialog = action.isVisible
                 )
+            }
+
+            // 드롭다운 - 북마크 삭제
+            is RecipeDetailAction.UnSaveRecipe -> {
+                viewModelScope.launch {
+                    deleteBookmarkUseCase.execute(action.id)
+                }
             }
         }
     }

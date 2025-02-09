@@ -126,7 +126,9 @@ fun DropDownMenuWithDetails(
                     tint = AppColors.label_color
                 )
             },
-            onClick = { },
+            onClick = {
+                onUnsaveClick()
+            },
             contentPadding = PaddingValues(horizontal = 18.dp),
             modifier = Modifier.height(40.dp)
         )

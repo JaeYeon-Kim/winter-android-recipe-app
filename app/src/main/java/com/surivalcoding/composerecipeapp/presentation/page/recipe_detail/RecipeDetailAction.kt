@@ -5,5 +5,6 @@ sealed interface RecipeDetailAction {
     data class HandleDropDown(val isDropDownMenuVisible: Boolean) : RecipeDetailAction
     data class CopyLink(val link: String) : RecipeDetailAction
     data class ShareRecipe(val isVisible: Boolean) : RecipeDetailAction
-    data class RateRecipe(val isVisible: Boolean): RecipeDetailAction
+    data class RateRecipe(val isVisible: Boolean) : RecipeDetailAction
+    data class UnSaveRecipe(val id: Int) : RecipeDetailAction
 }
