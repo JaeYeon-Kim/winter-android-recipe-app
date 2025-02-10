@@ -20,6 +20,7 @@ data class RecipeEntity(
     val rating: Double,
     val filterTime: String,
     val isBookMarked: Int,
+    val video: String,
     val ingredients: String,
     val procedure: String
 )

@@ -18,6 +18,7 @@ data class RecipeDto(
     val rating: Double? = null,
     val filterTime: String? = null,
     val isBookMarked: Boolean? = null,
+    val video: String? = null,
     val ingredients: List<IngredientDto?>? = listOf(),
     val procedure: List<String>? = listOf()
 )

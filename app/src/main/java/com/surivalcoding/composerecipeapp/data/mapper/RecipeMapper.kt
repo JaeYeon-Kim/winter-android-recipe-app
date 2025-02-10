@@ -19,6 +19,7 @@ fun RecipeDto.toMapper(): Recipe {
         rating = rating ?: 0.0,
         filterTime = filterTime ?: "",
         isBookMarked = isBookMarked ?: false,
+        video = video ?: "",
         ingredients = ingredients?.filterNotNull()?.map { it.toMapper() } ?: emptyList(),
         procedure = procedure ?: emptyList()
     )

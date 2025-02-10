@@ -15,6 +15,7 @@ object Urls {
              "rating": 1.3,
              "filterTime" : "Newest"
              "isBookMarked": false,
+             "video" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
              "ingredients": [
                {
                  "ingredient": {
@@ -67,6 +68,7 @@ object Urls {
              "rating": 2.5,
              "filterTime" : "Oldest"
              "isBookMarked": false,
+             "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", 
              "ingredients": [
                {
                  "ingredient": {
@@ -119,6 +121,7 @@ object Urls {
              "rating": 3.3,
              "filterTime" : "Popularity"
              "isBookMarked": false,
+             "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", 
              "ingredients": [
                {
                  "ingredient": {
@@ -163,6 +166,7 @@ object Urls {
              "rating": 4.5,
              "filterTime" : "Popularity"
              "isBookMarked": false,
+             "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
              "ingredients": [],
              "procedure": [
                "Preheat the oven to 180°C (356°F).",
@@ -182,6 +186,7 @@ object Urls {
              "rating": 5.0,
              "filterTime" : "Oldest"
              "isBookMarked": false,
+             "video" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
              "ingredients": [
                {
                  "ingredient": {
@@ -218,6 +223,7 @@ object Urls {
              "rating": 4.1,
              "filterTime" : "Newest"
              "isBookMarked": false,
+             "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
              "ingredients": [
                {
                  "ingredient": {
@@ -254,6 +260,7 @@ object Urls {
              "rating": 3.7,
              "filterTime" : "Oldest"
              "isBookMarked": false,
+             "video": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
              "ingredients": [
                {
                  "ingredient": {
@@ -282,6 +289,7 @@ object Urls {
              "rating": 2.3,
              "filterTime" : "Popularity"
              "isBookMarked": false,
+             "video" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
              "ingredients": [
                {
                  "ingredient": {
@@ -318,6 +326,7 @@ object Urls {
              "rating": 1.5,
              "filterTime" : "Newest"
              "isBookMarked": false,
+             "video" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
              "ingredients": [
                {
                  "ingredient": {
@@ -346,6 +355,7 @@ object Urls {
              "rating": 4.8,
              "filterTime" : "Newest"
              "isBookMarked": false,
+             "video" : "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
              "ingredients": [
                {
                  "ingredient": {

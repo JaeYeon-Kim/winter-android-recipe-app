@@ -17,6 +17,7 @@ fun RecipeEntity.toMapper(): Recipe {
         rating = rating,
         filterTime = filterTime,
         isBookMarked = isBookMarked == 1,
+        video = video,
         ingredients = runCatching { Json.decodeFromString<List<Ingredient>>(ingredients) }.getOrElse { emptyList() },
         procedure = runCatching { Json.decodeFromString<List<String>>(procedure) }.getOrElse { emptyList() }
     )
@@ -34,6 +35,7 @@ fun Recipe.toMapper(): RecipeEntity {
         rating = rating,
         filterTime = filterTime,
         isBookMarked = if (isBookMarked) 1 else 0,
+        video = video,
         ingredients = Json.encodeToString(ingredients),
         procedure = Json.encodeToString(procedure)
     )

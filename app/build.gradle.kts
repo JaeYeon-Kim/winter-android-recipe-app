@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.22"
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -109,6 +110,11 @@ dependencies {
 
     // dataStore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    // firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
+    implementation("com.google.firebase:firebase-analytics-ktx:22.2.0")
+    implementation("com.google.firebase:firebase-messaging-ktx:24.1.0")
 }
 
 // Allow references to generated code

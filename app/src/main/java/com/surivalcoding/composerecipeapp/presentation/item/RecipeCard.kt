@@ -150,6 +150,7 @@ private fun RecipeCardPreview() {
             rating = 4.0,
             filterTime = "Newest",
             isBookMarked = false,
+            video = "",
             ingredients = emptyList(),
             procedure = emptyList()
         ),

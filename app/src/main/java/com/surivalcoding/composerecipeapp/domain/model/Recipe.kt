@@ -13,6 +13,7 @@ data class Recipe(
     val rating: Double,
     val filterTime: String,
     val isBookMarked: Boolean,
+    val video: String,
     val ingredients: List<Ingredient>,
     val procedure: List<String>,
 ) {

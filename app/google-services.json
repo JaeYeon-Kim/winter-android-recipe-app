@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "131491084819",
+    "project_id": "composerecipe",
+    "storage_bucket": "composerecipe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131491084819:android:64fff67b694df6cacb5de6",
+        "android_client_info": {
+          "package_name": "com.surivalcoding.composerecipeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2DLW2EeHH84DG_bYq1UQZfu1qpqLvcQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

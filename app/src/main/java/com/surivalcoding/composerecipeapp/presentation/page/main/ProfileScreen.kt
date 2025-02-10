@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.surivalcoding.composerecipeapp.R
+import com.surivalcoding.composerecipeapp.presentation.item.RecipeCard
 import com.surivalcoding.composerecipeapp.presentation.item.button.NoneBorderFilterButton
 import com.surivalcoding.composerecipeapp.presentation.page.profile.FilterButtonState
 import com.surivalcoding.composerecipeapp.presentation.page.profile.ProfileAction
@@ -203,9 +205,33 @@ fun ProfileScreen(
             }
         }
 
+        Spacer(modifier = Modifier.height(23.dp))
+
         /*
         * 필터링에 따라 리스트 보여주는 처리 필요
         * */
+        when (state.filterButtonState.buttonState) {
+            // Recipe
+            ProfileCategory.RECIPE -> {
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(20.dp)
+                ) {
+                    items(state.recipeList) { recipe ->
+                        RecipeCard(recipe = recipe)
+                    }
+                }
+            }
+
+            // Videos
+            ProfileCategory.VIDEOS -> {
+
+            }
+
+
+            ProfileCategory.TAG -> {}
+        }
+
+
         LazyColumn(
             modifier = Modifier.fillMaxWidth()
         ) {
