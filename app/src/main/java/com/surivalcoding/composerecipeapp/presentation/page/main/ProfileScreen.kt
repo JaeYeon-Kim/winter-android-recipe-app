@@ -25,8 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.orhanobut.logger.Logger
 import com.surivalcoding.composerecipeapp.R
 import com.surivalcoding.composerecipeapp.presentation.item.RecipeCard
+import com.surivalcoding.composerecipeapp.presentation.item.VideoItem
 import com.surivalcoding.composerecipeapp.presentation.item.button.NoneBorderFilterButton
 import com.surivalcoding.composerecipeapp.presentation.page.profile.FilterButtonState
 import com.surivalcoding.composerecipeapp.presentation.page.profile.ProfileAction
@@ -224,7 +226,13 @@ fun ProfileScreen(
 
             // Videos
             ProfileCategory.VIDEOS -> {
-
+                LazyColumn(
+                    verticalArrangement = Arrangement.spacedBy(20.dp)
+                ) {
+                    items(state.recipeList) { recipe ->
+                        VideoItem(recipe.video)
+                    }
+                }
             }
 
 
