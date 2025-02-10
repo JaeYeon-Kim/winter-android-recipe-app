@@ -7,7 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.surivalcoding.composerecipeapp.domain.model.Recipe
+import androidx.navigation.navDeepLink
 import com.surivalcoding.composerecipeapp.presentation.page.home.HomeScreenRoot
 import com.surivalcoding.composerecipeapp.presentation.page.main.NotificationScreen
 import com.surivalcoding.composerecipeapp.presentation.page.profile.ProfileScreenRoot
@@ -39,7 +39,9 @@ fun MainScreenNavigation(
 
 
         // 북마크 화면(SavedRecipeScreen)
-        composable(MainRoute.BookMark.screenRoute) {
+        composable(
+            route = MainRoute.BookMark.screenRoute
+        ) {
             SavedRecipeScreenRoot(onRecipeDetailClick = { recipe ->
                 val jsonRecipe = Uri.encode(Json.encodeToString(recipe))
                 navController.navigate("${MainRoute.SearchDetail.screenRoute}/$jsonRecipe") {
@@ -61,9 +63,8 @@ fun MainScreenNavigation(
 
         // 검색 화면
         composable(MainRoute.Search.screenRoute) {
-            SearchRecipeScreenRoot(onRecipeDetailClick = { recipe ->
-                val jsonRecipe = Uri.encode(Json.encodeToString(recipe))
-                navController.navigate("${MainRoute.SearchDetail.screenRoute}/$jsonRecipe") {
+            SearchRecipeScreenRoot(onRecipeDetailClick = { recipeId ->
+                navController.navigate("${MainRoute.SearchDetail.screenRoute}/$recipeId") {
                     popUpTo(MainRoute.Search.screenRoute) {
                         inclusive = false
                     }
@@ -72,17 +73,18 @@ fun MainScreenNavigation(
             })
         }
 
-        // 상세 화면
+        // 🔹 딥 링크로 레시피 상세 페이지 이동 가능하도록 추가
         composable(
-            route = "${MainRoute.SearchDetail.screenRoute}/{recipeDetail}",
-            arguments = listOf(navArgument("recipeDetail") { type = NavType.StringType })
+            route = "${MainRoute.SearchDetail.screenRoute}/{recipeId}",
+            arguments = listOf(navArgument("recipeId") { type = NavType.IntType }),
+            deepLinks = listOf(navDeepLink { uriPattern = "app://recipe.co/recipe/{recipeId}" })
         ) { backStackEntry ->
-            val jsonRecipe = backStackEntry.arguments?.getString("recipeDetail")
-            val recipe = jsonRecipe?.let { Json.decodeFromString<Recipe>(it) }
-
-            recipe?.let {
+            val recipeId = backStackEntry.arguments?.getInt("recipeId")
+            recipeId?.let {
                 RecipeDetailScreenRoot()
             }
+
         }
+
     }
 }

@@ -19,4 +19,7 @@ interface SavedRecipeRepository {
 
     // 전체 레시피 저장
     suspend fun saveRecipeList(recipeList: List<Recipe>)
+
+    // 레시피 상세 데이터 가져오기
+    suspend fun getRecipeDetail(id: Int): Recipe?
 }

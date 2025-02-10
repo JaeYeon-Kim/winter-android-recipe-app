@@ -33,7 +33,7 @@ fun RecipeLinkDialog(
     onDismiss: () -> Unit = {},
 ) {
 
-    val link = "app.Recipe.co/$recipeId"
+    val link = "app.recipe.co/$recipeId"
 
     Dialog(onDismissRequest = { onDismiss() }) {
         Card(

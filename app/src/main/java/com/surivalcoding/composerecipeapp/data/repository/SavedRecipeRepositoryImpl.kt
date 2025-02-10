@@ -50,4 +50,8 @@ class SavedRecipeRepositoryImpl @Inject constructor(
         }
         recipeDao.insertRecipes(updatedRecipeList.map { it.toMapper() })
     }
+
+    override suspend fun getRecipeDetail(id: Int): Recipe? {
+        return recipeDao.getRecipeById(id)?.toMapper()
+    }
 }

@@ -25,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import com.orhanobut.logger.Logger
 import com.surivalcoding.composerecipeapp.R
 import com.surivalcoding.composerecipeapp.presentation.item.RecipeCard
 import com.surivalcoding.composerecipeapp.presentation.item.VideoItem
@@ -218,7 +217,10 @@ fun ProfileScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
-                    items(state.recipeList) { recipe ->
+                    items(
+                        state.recipeList,
+                        key = { recipe -> recipe.id }
+                    ) { recipe ->
                         RecipeCard(recipe = recipe)
                     }
                 }
@@ -229,7 +231,10 @@ fun ProfileScreen(
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
-                    items(state.recipeList) { recipe ->
+                    items(
+                        state.recipeList,
+                        key = { recipe -> recipe.id }
+                    ) { recipe ->
                         VideoItem(recipe.video)
                     }
                 }
@@ -238,14 +243,6 @@ fun ProfileScreen(
 
             ProfileCategory.TAG -> {}
         }
-
-
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            // 리스트 처리 필요
-        }
-
     }
 }
 

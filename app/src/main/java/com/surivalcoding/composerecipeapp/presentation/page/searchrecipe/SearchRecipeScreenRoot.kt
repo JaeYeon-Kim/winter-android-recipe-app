@@ -9,12 +9,11 @@ import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.orhanobut.logger.Logger
-import com.surivalcoding.composerecipeapp.domain.model.Recipe
 import com.surivalcoding.composerecipeapp.ui.AppColors
 
 @Composable
 fun SearchRecipeScreenRoot(
-    onRecipeDetailClick: (Recipe) -> Unit,
+    onRecipeDetailClick: (Int) -> Unit,
     viewModel: SearchRecipeViewModel = hiltViewModel()
 ) {
     val snackBarHostState = remember { SnackbarHostState() }
@@ -42,7 +41,7 @@ fun SearchRecipeScreenRoot(
                 when (action) {
                     is SearchRecipeAction.SearchRecipeDetail -> {
                         Logger.e("디테일 화면으로 이동해버려!")
-                        onRecipeDetailClick(action.recipeDetail)
+                        onRecipeDetailClick(action.recipeDetail.id)     // recipe id 값을 넘김
                     }
 
                     else -> viewModel.onAction(action)
