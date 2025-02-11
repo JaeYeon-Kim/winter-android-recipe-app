@@ -25,6 +25,7 @@ import com.surivalcoding.composerecipeapp.R
 import com.surivalcoding.composerecipeapp.presentation.item.button.FreeButton
 import com.surivalcoding.composerecipeapp.ui.AppColors
 import com.surivalcoding.composerecipeapp.ui.AppTextStyles
+import com.surivalcoding.composerecipeapp.util.CommonUtils.generateRecipeDeepLink
 
 @Composable
 fun RecipeLinkDialog(
@@ -32,8 +33,6 @@ fun RecipeLinkDialog(
     onCopyLink: (String) -> Unit = {},
     onDismiss: () -> Unit = {},
 ) {
-
-    val link = "app.recipe.co/$recipeId"
 
     Dialog(onDismissRequest = { onDismiss() }) {
         Card(
@@ -91,7 +90,7 @@ fun RecipeLinkDialog(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = link,
+                            text = generateRecipeDeepLink(recipeId),
                             style = AppTextStyles.smallTextMedium.copy(
                                 color = AppColors.label_color,
                                 fontSize = 11.sp
@@ -100,7 +99,7 @@ fun RecipeLinkDialog(
 
                         // Copy Link 버튼 , 추후 Selected 수정 필요
                         FreeButton(text = "Copy Link", isSelected = false, onClick = {
-                            onCopyLink(link)
+                            onCopyLink(generateRecipeDeepLink(recipeId))
                         })
                     }
                 }

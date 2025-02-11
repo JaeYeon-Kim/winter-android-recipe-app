@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.orhanobut.logger.Logger
@@ -30,7 +31,6 @@ import com.surivalcoding.composerecipeapp.ui.AppColors
 
 @Composable
 fun MainScreen(
-    modifier: Modifier = Modifier
 ) {
     val navController = rememberNavController()
     // 상태로 관리해야 UI가 업데이트됨

@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
+import com.orhanobut.logger.Logger
 import com.surivalcoding.composerecipeapp.presentation.page.home.HomeScreenRoot
 import com.surivalcoding.composerecipeapp.presentation.page.main.NotificationScreen
 import com.surivalcoding.composerecipeapp.presentation.page.profile.ProfileScreenRoot
@@ -80,6 +81,7 @@ fun MainScreenNavigation(
             deepLinks = listOf(navDeepLink { uriPattern = "app://recipe.co/recipe/{recipeId}" })
         ) { backStackEntry ->
             val recipeId = backStackEntry.arguments?.getInt("recipeId")
+            Logger.e("레시피 상세 화면 ID: $recipeId")
             recipeId?.let {
                 RecipeDetailScreenRoot()
             }
