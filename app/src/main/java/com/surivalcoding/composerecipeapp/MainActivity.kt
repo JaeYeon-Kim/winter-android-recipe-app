@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
             MyApp()
 
             LaunchedEffect(Unit) {
+                Logger.e("들어온 데이터: ${intent.data}")
                 handleDeepLink(intent, navController)
             }
         }
@@ -52,6 +53,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        Logger.e("들어온 데이터: ${intent.data}")
         handleDeepLink(intent, navController)
     }
 
