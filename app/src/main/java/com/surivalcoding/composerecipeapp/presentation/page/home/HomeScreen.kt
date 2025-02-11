@@ -176,6 +176,9 @@ fun HomeScreen(
                     recipe = recipe,
                     onBookMarkClick = { recipeId ->
                         onAction(HomeAction.AddBookmark(recipeId))
+                    },
+                    onItemClick = { recipeId ->
+                        onAction(HomeAction.RecipeDetail(recipeId))
                     }
                 )
             }
@@ -204,7 +207,10 @@ fun HomeScreen(
             itemsIndexed(state.newRecipeList) { index, recipe ->
                 NewRecipeItem(
                     recipe = recipe,
-                    itemIndex = index
+                    itemIndex = index,
+                    onItemClick = { recipeId ->
+                        onAction(HomeAction.RecipeDetail(recipeId))
+                    }
                 )
             }
         }

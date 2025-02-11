@@ -235,7 +235,10 @@ fun ProfileScreen(
                         state.recipeList,
                         key = { recipe -> recipe.id }
                     ) { recipe ->
-                        VideoItem(recipe.video)
+                        VideoItem(
+                            videoUrl = recipe.video,
+                            image = recipe.image
+                        )
                     }
                 }
             }

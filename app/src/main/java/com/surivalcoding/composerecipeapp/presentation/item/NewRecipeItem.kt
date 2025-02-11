@@ -2,6 +2,7 @@ package com.surivalcoding.composerecipeapp.presentation.item
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,14 +36,17 @@ import com.surivalcoding.composerecipeapp.ui.AppTextStyles
 
 @Composable
 fun NewRecipeItem(
-    modifier: Modifier = Modifier,
     itemIndex: Int,
-    recipe: Recipe
+    recipe: Recipe,
+    onItemClick: (Int) -> Unit = {},
 ) {
     Box(
         modifier = Modifier
             .width(251.dp)
             .aspectRatio(251f / 127f)
+            .clickable {
+                onItemClick(recipe.id)
+            }
     ) {
         Box(
             modifier = Modifier
@@ -173,6 +177,7 @@ private fun NewRecipeItemPreview() {
             video = "",
             ingredients = emptyList(),
             procedure = emptyList()
-        )
+        ),
+        onItemClick = {}
     )
 }

@@ -31,12 +31,14 @@ import com.surivalcoding.composerecipeapp.ui.AppTextStyles
 fun MainRecipeItem(
     modifier: Modifier = Modifier,
     recipe: Recipe,
-    onBookMarkClick: (Int) -> Unit = {}
+    onBookMarkClick: (Int) -> Unit = {},
+    onItemClick: (Int) -> Unit = {}
 ) {
     Box(
         modifier = Modifier
             .width(150.dp)
             .height(231.dp)
+            .clickable { onItemClick(recipe.id) }
     ) {
         Box(
             modifier = Modifier

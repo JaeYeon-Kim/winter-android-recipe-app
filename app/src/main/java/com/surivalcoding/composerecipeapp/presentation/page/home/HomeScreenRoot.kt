@@ -14,6 +14,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 @Composable
 fun HomeScreenRoot(
     onSearchRecipeClick: (HomeAction) -> Unit,
+    onRecipeDetailClick: (Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     HomeScreen(
@@ -21,6 +22,7 @@ fun HomeScreenRoot(
         onAction = { action ->
             when (action) {
                 is HomeAction.SearchRecipe -> onSearchRecipeClick(action)
+                is HomeAction.RecipeDetail -> onRecipeDetailClick(action.id)
                 else -> viewModel.onAction(action)
             }
         }

@@ -189,6 +189,9 @@ class HomeViewModel @Inject constructor(
                 Logger.e("북마크 추가!!")
                 addBookmark(action.id)
             }
+            is HomeAction.RecipeDetail -> {
+                Logger.e("레시피 상세 화면으로 이동")
+            }
         }
     }
 }

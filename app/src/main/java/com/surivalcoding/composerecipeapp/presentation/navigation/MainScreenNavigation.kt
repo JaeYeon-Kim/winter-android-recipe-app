@@ -34,6 +34,15 @@ fun MainScreenNavigation(
                         }
                         launchSingleTop = true
                     }
+                },
+                onRecipeDetailClick = { id ->
+
+                    navController.navigate("${MainRoute.SearchDetail.screenRoute}/$id") {
+                        popUpTo(MainRoute.Home.screenRoute) {
+                            inclusive = false
+                        }
+                        launchSingleTop = true
+                    }
                 }
             )
         }
