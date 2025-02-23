@@ -39,7 +39,7 @@ fun RecipeCard(
     modifier: Modifier = Modifier,
     recipe: Recipe,
     isDetail: Boolean = false,      // 레시피 상세 화면일 경우 이름 영역 visible 처리
-    onItemClick: (Recipe) -> Unit = {},     // 리스트 내 아이템 클릭 처리
+    onItemClick: (Int) -> Unit = {},     // 리스트 내 아이템 클릭 처리
     onDeleteBookMark: (Int) -> Unit = {},
 ) {
     Box(
@@ -50,7 +50,7 @@ fun RecipeCard(
             )
             .fillMaxWidth()
             .aspectRatio(2f)
-            .clickable { onItemClick(recipe) },
+            .clickable { onItemClick(recipe.id) },
         contentAlignment = Alignment.TopStart,
     ) {
         AsyncImage(

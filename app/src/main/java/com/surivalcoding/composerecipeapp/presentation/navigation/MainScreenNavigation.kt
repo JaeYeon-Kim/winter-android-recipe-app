@@ -51,9 +51,8 @@ fun MainScreenNavigation(
         composable(
             route = MainRoute.BookMark.screenRoute
         ) {
-            SavedRecipeScreenRoot(onRecipeDetailClick = { recipe ->
-                val jsonRecipe = Uri.encode(Json.encodeToString(recipe))
-                navController.navigate("${MainRoute.SearchDetail.screenRoute}/$jsonRecipe") {
+            SavedRecipeScreenRoot(onRecipeDetailClick = { recipeId ->
+                navController.navigate("${MainRoute.SearchDetail.screenRoute}/$recipeId") {
                     popUpTo(MainRoute.BookMark.screenRoute) {
                         inclusive = false
                     }

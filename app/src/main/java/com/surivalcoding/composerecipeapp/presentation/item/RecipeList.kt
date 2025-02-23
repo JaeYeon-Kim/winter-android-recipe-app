@@ -32,8 +32,8 @@ fun RecipeList(state: SavedRecipeState, onAction: (SavedRecipeAction) -> Unit) {
         ) { recipe ->
             RecipeCard(
                 recipe = recipe,
-                onItemClick = { recipeDetail ->
-                    onAction(SavedRecipeAction.SearchRecipeDetail(recipeDetail))
+                onItemClick = { id ->
+                    onAction(SavedRecipeAction.SearchRecipeDetail(id))
                 },
                 onDeleteBookMark = { id ->
                     onAction(SavedRecipeAction.DeleteBookmark(id))

@@ -1,10 +1,12 @@
 package com.surivalcoding.composerecipeapp.util
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.media.RingtoneManager
 import android.net.Uri
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -19,7 +21,13 @@ import kotlin.random.Random
 @AndroidEntryPoint
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
+    override fun onCreate() {
+        super.onCreate()
+        PushUtils.acquireWakeLock(this)
+    }
+
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        PushUtils.acquireWakeLock(this)
         remoteMessage.data.let { result ->
             Logger.e("들어온 FCM 데이터: $remoteMessage $result")
             // 딥링크 추출
@@ -30,6 +38,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             showNotification(title ?: "UNKNOWN", body ?: "UNKNOWN", deepLinkUrl = deepLinkUrl)
         }
+
+        PushUtils.releaseWakeLock()
     }
 
     // 새로운 토큰 발급시
@@ -62,12 +72,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
 
+        val uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)          // 알림 기본 소리
 
         val notification = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.notification)
             .setContentTitle(title)
             .setContentText(message)
+            .setDefaults(Notification.DEFAULT_ALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setSound(uri)          // 알림 설정
             .setContentIntent(pendingIntent)    // PedingIntent 설정
             .setAutoCancel(true)        // 알림 클릭시 제거
             .build()
