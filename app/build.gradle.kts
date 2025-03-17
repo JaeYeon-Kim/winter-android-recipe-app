@@ -6,6 +6,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -114,12 +115,16 @@ dependencies {
     // firebase
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-analytics-ktx:22.2.0")
+    implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-messaging-ktx:24.1.0")
+
 
 
     // exoplayer
     implementation("androidx.media3:media3-exoplayer:1.3.1")
     implementation("androidx.media3:media3-ui:1.3.1")
+
+
 }
 
 // Allow references to generated code
